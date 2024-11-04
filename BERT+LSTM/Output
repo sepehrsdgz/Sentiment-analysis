@@ -1,0 +1,73 @@
+C:\Users\Sepehr\anaconda3\envs\py310\python.exe C:\ITU\RFI-project\Model-training\LSTM+BERT\Voting.py
+2024-11-02 20:16:11.110853: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-11-02 20:16:11.602654: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 5450 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 3070 Ti Laptop GPU, pci bus id: 0000:01:00.0, compute capability: 8.6
+WARNING:tensorflow:Layer lstm will not use cuDNN kernels since it doesn't meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
+WARNING:tensorflow:Layer lstm will not use cuDNN kernels since it doesn't meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
+WARNING:tensorflow:Layer lstm will not use cuDNN kernels since it doesn't meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
+WARNING:tensorflow:Layer lstm_1 will not use cuDNN kernels since it doesn't meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
+BERT input shape: (13823, 128), (13823, 128)
+LSTM input shape: (13823, 50)
+y_test shape (one-hot): (13823, 4)
+2024-11-02 20:16:21.893380: I tensorflow/stream_executor/cuda/cuda_blas.cc:1614] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+432/432 [==============================] - 51s 111ms/step
+432/432 [==============================] - 27s 62ms/step
+
+Sample BERT predictions (probabilities): [[4.7437270e-04 9.7858000e-01 1.7654824e-05 2.0927960e-02]
+ [2.1510334e-05 1.4938131e-05 9.9996161e-01 1.9515194e-06]
+ [6.5619884e-06 1.5755352e-06 4.6060732e-06 9.9998724e-01]
+ [9.9999118e-01 6.3144654e-07 6.9941329e-06 1.2580313e-06]
+ [1.2862736e-06 9.9999094e-01 5.4207153e-06 2.3758284e-06]]
+
+Sample LSTM predictions (probabilities): [[1.7029159e-01 1.3873762e-01 6.4555746e-01 4.5413341e-02]
+ [1.1077961e-03 1.8271561e-03 9.9520785e-01 1.8571293e-03]
+ [5.3388551e-03 3.5185538e-02 1.3003660e-02 9.4647193e-01]
+ [9.9272847e-01 4.5081885e-03 2.6161221e-03 1.4734376e-04]
+ [4.3582052e-04 9.9623555e-01 2.6887187e-03 6.3989841e-04]]
+
+Sample BERT class labels: [1 2 3 0 1 1 0 3 3 1]
+
+Sample LSTM class labels: [2 2 3 0 1 2 0 3 3 1]
+
+True labels sample: [1 2 3 0 1 1 0 3 3 1]
+
+BERT model performance:
+              precision    recall  f1-score   support
+
+    Negative       0.93      0.94      0.93      4194
+     Neutral       0.89      0.94      0.91      3420
+    Positive       0.92      0.93      0.93      3777
+  Irrelevant       0.96      0.85      0.90      2432
+
+    accuracy                           0.92     13823
+   macro avg       0.93      0.92      0.92     13823
+weighted avg       0.92      0.92      0.92     13823
+
+
+LSTM model performance:
+              precision    recall  f1-score   support
+
+    Negative       0.86      0.84      0.85      4194
+     Neutral       0.82      0.76      0.79      3420
+    Positive       0.80      0.81      0.80      3777
+  Irrelevant       0.73      0.82      0.77      2432
+
+    accuracy                           0.81     13823
+   macro avg       0.80      0.81      0.80     13823
+weighted avg       0.81      0.81      0.81     13823
+
+
+Classification Report for Ensemble Voting:
+               precision    recall  f1-score   support
+
+    Negative       0.93      0.94      0.93      4194
+     Neutral       0.89      0.94      0.91      3420
+    Positive       0.92      0.93      0.93      3777
+  Irrelevant       0.96      0.85      0.90      2432
+
+    accuracy                           0.92     13823
+   macro avg       0.93      0.92      0.92     13823
+weighted avg       0.92      0.92      0.92     13823
+
+
+Process finished with exit code 0
