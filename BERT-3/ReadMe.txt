@@ -1,0 +1,1 @@
+Bert model with 70% training 30% test Data
