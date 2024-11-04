@@ -1,0 +1,107 @@
+C:\Users\Sepehr\anaconda3\envs\py310\python.exe C:\ITU\RFI-proje\BERT_modeling\BERT_V.1.0.py 
+C:\Users\Sepehr\anaconda3\envs\py310\lib\site-packages\sklearn\utils\_param_validation.py:11: UserWarning: A NumPy version >=1.23.5 and <2.3.0 is required for this version of SciPy (detected version 1.21.6)
+  from scipy.sparse import csr_matrix, issparse
+2024-10-24 00:47:00.026876: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-10-24 00:47:00.541256: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 5450 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 3070 Ti Laptop GPU, pci bus id: 0000:01:00.0, compute capability: 8.6
+
+Sample X_train after split:
+['im a huge proponent of assassins creed translates to i am a ubisoft quebec player'
+ 'heres hoping for a prepatch announcement tomorrow'
+ 'nah this is the hours where you google anything or watch weird shit on youtube why am i watching videos about the dank web lmfaoo'
+ 'of all the carts that have a kerb verizon is the only one that doesnt and i probably have a problem with my phone'
+ 'had no issues all week playing ys origins  fairy tail or even assassins creed odyssey  load up forza and i have  disconnects completely where my modem has to reset it self  wtf is this shit']
+
+Sample tokenized input IDs (train):
+[[  101 10047  1037  4121 22488  1997 18364 16438 16315  2000  1045  2572
+   1037  1057 18477 15794  5447  2447   102     0     0     0     0     0
+      0     0     0     0     0     0     0     0     0     0     0     0
+      0     0     0     0     0     0     0     0     0     0     0     0
+      0     0     0     0     0     0     0     0     0     0     0     0
+      0     0     0     0     0     0     0     0     0     0     0     0
+      0     0     0     0     0     0     0     0     0     0     0     0
+      0     0     0     0     0     0     0     0     0     0     0     0
+      0     0     0     0     0     0     0     0     0     0     0     0
+      0     0     0     0     0     0     0     0     0     0     0     0
+      0     0     0     0     0     0     0     0]
+ [  101  2182  2015  5327  2005  1037 17463  4017  2818  8874  4826   102
+      0     0     0     0     0     0     0     0     0     0     0     0
+      0     0     0     0     0     0     0     0     0     0     0     0
+      0     0     0     0     0     0     0     0     0     0     0     0
+      0     0     0     0     0     0     0     0     0     0     0     0
+      0     0     0     0     0     0     0     0     0     0     0     0
+      0     0     0     0     0     0     0     0     0     0     0     0
+      0     0     0     0     0     0     0     0     0     0     0     0
+      0     0     0     0     0     0     0     0     0     0     0     0
+      0     0     0     0     0     0     0     0     0     0     0     0
+      0     0     0     0     0     0     0     0]]
+
+Sample tokenized attention masks (train):
+[[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+ [1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]]
+Train Input IDs shape: (55292, 128)
+Train Attention Masks shape: (55292, 128)
+Validation Input IDs shape: (974, 128)
+Test Input IDs shape: (13824, 128)
+
+Sample one-hot encoded labels (train):
+[[0. 0. 1. 0.]
+ [0. 0. 1. 0.]
+ [0. 1. 0. 0.]
+ [1. 0. 0. 0.]
+ [0. 0. 1. 0.]]
+Some weights of the PyTorch model were not used when initializing the TF 2.0 model TFBertModel: ['cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.bias', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.dense.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias']
+- This IS expected if you are initializing TFBertModel from a PyTorch model trained on another task or with another architecture (e.g. initializing a TFBertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing TFBertModel from a PyTorch model that you expect to be exactly identical (e.g. initializing a TFBertForSequenceClassification model from a BertForSequenceClassification model).
+All the weights of TFBertModel were initialized from the PyTorch model.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use TFBertModel for predictions without further training.
+Model: "model"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_ids (InputLayer)         [(None, 128)]        0           []                               
+                                                                                                  
+ attention_masks (InputLayer)   [(None, 128)]        0           []                               
+                                                                                                  
+ tf_bert_model (TFBertModel)    TFBaseModelOutputWi  109482240   ['input_ids[0][0]',              
+                                thPoolingAndCrossAt               'attention_masks[0][0]']        
+                                tentions(last_hidde                                               
+                                n_state=(None, 128,                                               
+                                 768),                                                            
+                                 pooler_output=(Non                                               
+                                e, 768),                                                          
+                                 past_key_values=No                                               
+                                ne, hidden_states=N                                               
+                                one, attentions=Non                                               
+                                e, cross_attentions                                               
+                                =None)                                                            
+                                                                                                  
+ dense (Dense)                  (None, 4)            3076        ['tf_bert_model[0][1]']          
+                                                                                                  
+==================================================================================================
+Total params: 109,485,316
+Trainable params: 109,485,316
+Non-trainable params: 0
+__________________________________________________________________________________________________
+Epoch 1/5
+2024-10-24 00:47:29.336617: I tensorflow/stream_executor/cuda/cuda_blas.cc:1614] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+3456/3456 [==============================] - 666s 189ms/step - loss: 0.8655 - accuracy: 0.6541 - val_loss: 0.4008 - val_accuracy: 0.8696
+Epoch 2/5
+3456/3456 [==============================] - 649s 188ms/step - loss: 0.4055 - accuracy: 0.8540 - val_loss: 0.1489 - val_accuracy: 0.9507
+Epoch 3/5
+3456/3456 [==============================] - 648s 188ms/step - loss: 0.1725 - accuracy: 0.9410 - val_loss: 0.1072 - val_accuracy: 0.9682
+Epoch 4/5
+3456/3456 [==============================] - 648s 188ms/step - loss: 0.0950 - accuracy: 0.9670 - val_loss: 0.1761 - val_accuracy: 0.9610
+Epoch 5/5
+3456/3456 [==============================] - 649s 188ms/step - loss: 0.0659 - accuracy: 0.9768 - val_loss: 0.1450 - val_accuracy: 0.9641
+INFO:tensorflow:Assets written to: BERT_V.1.1h5\assets
+432/432 [==============================] - 49s 112ms/step - loss: 0.2785 - accuracy: 0.9266
+Test Loss: 0.2784547507762909, Test Accuracy: 0.9265769720077515
+
+Process finished with exit code 0

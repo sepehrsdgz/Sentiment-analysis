@@ -1,0 +1,17 @@
+432/432 [==============================] - 54s 115ms/step
+
+True labels sample: [1 2 3 0 1 1 0 3 3 1]
+
+BERT model performance:
+              precision    recall  f1-score   support
+
+    Negative       0.92      0.95      0.94      4194
+     Neutral       0.92      0.92      0.92      3420
+    Positive       0.92      0.93      0.93      3777
+  Irrelevant       0.95      0.89      0.92      2432
+
+    accuracy                           0.93     13823
+   macro avg       0.93      0.92      0.93     13823
+weighted avg       0.93      0.93      0.93     13823
+
+
