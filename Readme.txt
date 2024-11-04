@@ -1,0 +1,1 @@
+Bert model with emojis included in training data
