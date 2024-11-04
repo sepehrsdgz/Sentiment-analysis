@@ -1,0 +1,111 @@
+C:\Users\Sepehr\anaconda3\envs\py310\python.exe C:\ITU\RFI-project\Model-training\RoBERTa\RoBERTa-1.py
+2024-11-03 03:16:22.573878: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-11-03 03:16:23.066254: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 5450 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 3070 Ti Laptop GPU, pci bus id: 0000:01:00.0, compute capability: 8.6
+
+Sample X_train after split:
+['amazon great indian sale get rs  amazon pay cashback with a new oneplus tv read more at ourswidewebcom    tco  ipktvwuyq'
+ 'ubisoftsupport rainbowgame would u guys please for the sake of god shut down xresolver im sick of constantly hit off'
+ 'ghostrecon how do we fix the cursor issue nobody really remember the last update with this issue'
+ 'eamaddennfl the disrespect to baltimore is unreal  most pro bowlers on our team everthe mvp isnt even a  the best kicker ever isnt even a  and the highest rated player on our team is an offseason acquisition laughable'
+ 'all most got that ace in ranked']
+
+Sample tokenized input IDs (train):
+[[    0 43358   372  9473   811  1392   120 47752  1437   524 20524   582
+   1055  1644    19    10    92    65  7269 30016  1166    55    23    84
+   4184   808  2753  3209   175  1437  1437  1437   326   876  1437 36180
+    330 18724   605  5781  1343     2     1     1     1     1     1     1
+      1     1     1     1     1     1     1     1     1     1     1     1
+      1     1     1     1     1     1     1     1     1     1     1     1
+      1     1     1     1     1     1     1     1     1     1     1     1
+      1     1     1     1     1     1     1     1     1     1     1     1
+      1     1     1     1     1     1     1     1     1     1     1     1
+      1     1     1     1     1     1     1     1     1     1     1     1
+      1     1     1     1     1     1     1     1]
+ [    0  1792 47751 22930 20927  2670    74  1717  1669  2540    13     5
+  12253     9  9069  2572   159  3023  1535 35934  4356  4736     9  5861
+    478   160     2     1     1     1     1     1     1     1     1     1
+      1     1     1     1     1     1     1     1     1     1     1     1
+      1     1     1     1     1     1     1     1     1     1     1     1
+      1     1     1     1     1     1     1     1     1     1     1     1
+      1     1     1     1     1     1     1     1     1     1     1     1
+      1     1     1     1     1     1     1     1     1     1     1     1
+      1     1     1     1     1     1     1     1     1     1     1     1
+      1     1     1     1     1     1     1     1     1     1     1     1
+      1     1     1     1     1     1     1     1]]
+
+Sample tokenized attention masks (train):
+[[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+  1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+ [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0
+  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]]
+Train Input IDs shape: (48381, 128)
+Train Attention Masks shape: (48381, 128)
+Validation Input IDs shape: (974, 128)
+Test Input IDs shape: (20735, 128)
+Some weights of the PyTorch model were not used when initializing the TF 2.0 model TFRobertaModel: ['lm_head.layer_norm.bias', 'lm_head.dense.weight', 'lm_head.dense.bias', 'roberta.embeddings.position_ids', 'lm_head.layer_norm.weight', 'lm_head.bias']
+- This IS expected if you are initializing TFRobertaModel from a PyTorch model trained on another task or with another architecture (e.g. initializing a TFBertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing TFRobertaModel from a PyTorch model that you expect to be exactly identical (e.g. initializing a TFBertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights or buffers of the TF 2.0 model TFRobertaModel were not initialized from the PyTorch model and are newly initialized: ['roberta.pooler.dense.weight', 'roberta.pooler.dense.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Model: "model"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to
+==================================================================================================
+ input_ids (InputLayer)         [(None, 128)]        0           []
+
+ attention_masks (InputLayer)   [(None, 128)]        0           []
+
+ tf_roberta_model (TFRobertaMod  TFBaseModelOutputWi  124645632  ['input_ids[0][0]',
+ el)                            thPoolingAndCrossAt               'attention_masks[0][0]']
+                                tentions(last_hidde
+                                n_state=(None, 128,
+                                 768),
+                                 pooler_output=(Non
+                                e, 768),
+                                 past_key_values=No
+                                ne, hidden_states=N
+                                one, attentions=Non
+                                e, cross_attentions
+                                =None)
+
+ dense (Dense)                  (None, 4)            3076        ['tf_roberta_model[0][1]']
+
+==================================================================================================
+Total params: 124,648,708
+Trainable params: 124,648,708
+Non-trainable params: 0
+__________________________________________________________________________________________________
+Epoch 1/5
+2024-11-03 03:16:54.566527: I tensorflow/stream_executor/cuda/cuda_blas.cc:1614] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+3024/3024 [==============================] - 608s 196ms/step - loss: 0.9192 - accuracy: 0.6244 - val_loss: 0.5764 - val_accuracy: 0.7864
+Epoch 2/5
+3024/3024 [==============================] - 589s 195ms/step - loss: 0.5900 - accuracy: 0.7740 - val_loss: 0.2555 - val_accuracy: 0.9189
+Epoch 3/5
+3024/3024 [==============================] - 588s 195ms/step - loss: 0.3357 - accuracy: 0.8788 - val_loss: 0.1590 - val_accuracy: 0.9600
+Epoch 4/5
+3024/3024 [==============================] - 588s 194ms/step - loss: 0.2024 - accuracy: 0.9273 - val_loss: 0.1289 - val_accuracy: 0.9651
+Epoch 5/5
+3024/3024 [==============================] - 589s 195ms/step - loss: 0.1357 - accuracy: 0.9519 - val_loss: 0.1292 - val_accuracy: 0.9671
+648/648 [==============================] - 75s 113ms/step
+	Classification Report for RoBERTa:
+
+               precision    recall  f1-score   support
+
+    Negative       0.92      0.93      0.93      6293
+     Neutral       0.91      0.91      0.91      5129
+    Positive       0.92      0.91      0.91      5665
+  Irrelevant       0.89      0.89      0.89      3648
+
+    accuracy                           0.91     20735
+   macro avg       0.91      0.91      0.91     20735
+weighted avg       0.91      0.91      0.91     20735
+
+648/648 [==============================] - 75s 115ms/step - loss: 0.3134 - accuracy: 0.9129
+Test Loss: 0.3133685886859894, Test Accuracy: 0.9129491448402405
+
+Process finished with exit code 0
